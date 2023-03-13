@@ -20,6 +20,20 @@ class Human {
         this.name = name,
             this.age = age;
     }
+    get myName() {
+        return `Name: ${this.name}`;
+    }
+    set myName(name) {
+        this.name = name;
+    }
+    get myAge() {
+        return this.age;
+    }
+    set myAge(age) {
+        this.age = age;
+    }
 }
 const momo = new Human('elmon nur', 20);
-console.log(momo);
+momo.myAge = 90;
+console.log(momo.myAge);
+console.log(momo.myName);
