@@ -39,13 +39,21 @@ console.log(person.great('Momon'));
 
 console.log(person );
 
-class Human {
+interface OrdinaryPerson{
+    myName :  string,
+    myAge : number,
+    run : ()=>void,
+    getBook : ()=>string | undefined
+}
+class Human implements OrdinaryPerson{
     public name : string
     public age : number
+    public gander : string
 
-    constructor(name: string, age: number ) {
+    constructor(name: string, age: number, gander: string ) {
         this.name = name,
-        this.age = age
+        this.age = age,
+        this.gander= gander
     }
 
     get myName(){
@@ -63,9 +71,34 @@ class Human {
     set myAge(age:number){
         this.age = age
     }
+
+    public run() {
+        console.log('I\'m running...');
+        
+    }
+
+    public getBook() : string | undefined{
+        if (this.myAge>50) {
+            return 'Programming'
+        }
+    }
 }
 
-const momo = new Human('elmon nur', 20)
+class Programmer extends Human {
+    public Programming() {
+        console.log(`My gander : ${this.gander}`);
+        console.log("I'm programmer...");
+    }
+}
+
+const momo = new Human('elmon nur', 20, 'famale')
 momo.myAge= 90;
 console.log(momo.myAge);
 console.log(momo.myName);
+
+momo.run();
+momo.myAge= 20;
+console.log(this.getBook);
+
+const mom = new Programmer('Ariani',20,'famale');
+mom.Programming()
